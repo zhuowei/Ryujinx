@@ -47,15 +47,19 @@ namespace Ryujinx.Headless.SDL2.Vulkan
                     throw new Exception(errorMessage);
                 }
             };
-
+/* TODO(zhuowei): it's InvokeAction on this build */
+/*
             if (SDL2Driver.MainThreadDispatcher != null)
             {
                 SDL2Driver.MainThreadDispatcher(createSurface);
             }
             else
             {
+*/
                 createSurface();
+/*
             }
+*/
 
             return (IntPtr)surfaceHandle;
         }

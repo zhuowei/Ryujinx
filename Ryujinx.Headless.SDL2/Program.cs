@@ -77,6 +77,7 @@ namespace Ryujinx.Headless.SDL2
             _accountManager = new AccountManager(_libHacHorizonManager.RyujinxClient);
             _userChannelPersistence = new UserChannelPersistence();
 
+/*
             if (OperatingSystem.IsMacOS())
             {
                 AutoResetEvent invoked = new AutoResetEvent(false);
@@ -96,6 +97,7 @@ namespace Ryujinx.Headless.SDL2
                     invoked.WaitOne();
                 };
             }
+*/
 
             _inputManager = new InputManager(new SDL2KeyboardDriver(), new SDL2GamepadDriver());
 
