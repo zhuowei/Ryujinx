@@ -53,7 +53,7 @@ namespace Ryujinx.Headless.SDL2
         private static InputManager _inputManager;
         private static Switch _emulationContext;
         private static WindowBase _window;
-        private static WindowsMultimediaTimerResolution _windowsMultimediaTimerResolution;
+        //private static WindowsMultimediaTimerResolution _windowsMultimediaTimerResolution;
         private static List<InputConfig> _inputConfiguration;
         private static bool _enableKeyboard;
         private static bool _enableMouse;
@@ -560,12 +560,14 @@ MultiplayerMode.Disabled,
 
         private static void ExecutionEntrypoint()
         {
+/*
             if (OperatingSystem.IsWindows())
             {
                 _windowsMultimediaTimerResolution = new WindowsMultimediaTimerResolution(1);
             }
+*/
 
-            DisplaySleep.Prevent();
+            //DisplaySleep.Prevent();
 
             _window.Initialize(_emulationContext, _inputConfiguration, _enableKeyboard, _enableMouse);
 
@@ -577,11 +579,13 @@ MultiplayerMode.Disabled,
             _emulationContext.Dispose();
             _window.Dispose();
 
+/*
             if (OperatingSystem.IsWindows())
             {
                 _windowsMultimediaTimerResolution?.Dispose();
                 _windowsMultimediaTimerResolution = null;
             }
+*/
         }
 
         private static bool LoadApplication(Options options)
@@ -665,17 +669,9 @@ MultiplayerMode.Disabled,
             }
 
             Translator.IsReadyForTranslation.Reset();
-
-            Thread windowThread = new Thread(() =>
-            {
-                ExecutionEntrypoint();
-            })
-            {
-                Name = "GUI.WindowThread"
-            };
-
-            windowThread.Start();
-            windowThread.Join();
+            // https://github.com/Ryujinx/Ryujinx/pull/3818
+            // we reverted most of this, but we still need this
+            ExecutionEntrypoint();
 
             return true;
         }

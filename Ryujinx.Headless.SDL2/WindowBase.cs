@@ -176,14 +176,6 @@ namespace Ryujinx.Headless.SDL2
 
         public void Render()
         {
-            InitializeWindowRenderer();
-
-            Device.Gpu.Renderer.Initialize(_glLogLevel);
-
-            InitializeRenderer();
-
-            _gpuVendorName = GetGpuVendorName();
-
             Device.Gpu.Renderer.RunLoop(() =>
             {
                 Device.Gpu.SetGpuThread();
@@ -340,6 +332,14 @@ namespace Ryujinx.Headless.SDL2
             _isActive = true;
 
             InitializeWindow();
+
+            InitializeWindowRenderer();
+
+            Device.Gpu.Renderer.Initialize(_glLogLevel);
+
+            InitializeRenderer();
+
+            _gpuVendorName = GetGpuVendorName();
 
             Thread renderLoopThread = new Thread(Render)
             {
