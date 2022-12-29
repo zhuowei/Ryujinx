@@ -9,6 +9,7 @@ using Ryujinx.Common.Configuration.Hid;
 using Ryujinx.Common.Configuration.Hid.Controller;
 using Ryujinx.Common.Configuration.Hid.Controller.Motion;
 using Ryujinx.Common.Configuration.Hid.Keyboard;
+using Ryujinx.Common.Configuration.Multiplayer;
 using Ryujinx.Common.Logging;
 using Ryujinx.Common.SystemInterop;
 using Ryujinx.Common.Utilities;
@@ -547,7 +548,12 @@ namespace Ryujinx.Headless.SDL2
                                                                   options.MemoryManagerMode,
                                                                   (bool)options.IgnoreMissingServices,
                                                                   options.AspectRatio,
-                                                                  options.AudioVolume);
+                                                                  options.AudioVolume,
+/*useHypervisor=*/false,
+MultiplayerMode.Disabled,
+/*multiplayerDisableP2p=*/false,
+/*multiplayerLdnPassphrase=*/"",
+/*multiplayerLanInterfaceId=*/"");
 
             return new Switch(configuration);
         }

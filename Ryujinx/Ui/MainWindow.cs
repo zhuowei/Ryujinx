@@ -14,6 +14,7 @@ using Ryujinx.Audio.Backends.SoundIo;
 using Ryujinx.Audio.Integration;
 using Ryujinx.Common;
 using Ryujinx.Common.Configuration;
+using Ryujinx.Common.Configuration.Multiplayer;
 using Ryujinx.Common.Logging;
 using Ryujinx.Common.SystemInterop;
 using Ryujinx.Graphics.GAL;
@@ -576,7 +577,13 @@ namespace Ryujinx.Ui
                                                                           ConfigurationState.Instance.System.MemoryManagerMode,
                                                                           ConfigurationState.Instance.System.IgnoreMissingServices,
                                                                           ConfigurationState.Instance.Graphics.AspectRatio,
-                                                                          ConfigurationState.Instance.System.AudioVolume);
+                                                                          ConfigurationState.Instance.System.AudioVolume,
+
+/*useHypervisor=*/false,
+MultiplayerMode.Disabled,
+/*multiplayerDisableP2p=*/false,
+/*multiplayerLdnPassphrase=*/"",
+/*multiplayerLanInterfaceId=*/"");
 
             _emulationContext = new HLE.Switch(configuration);
         }

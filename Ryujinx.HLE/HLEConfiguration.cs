@@ -1,6 +1,7 @@
 ﻿using LibHac.Tools.FsSystem;
 using Ryujinx.Audio.Integration;
 using Ryujinx.Common.Configuration;
+using Ryujinx.Common.Configuration.Multiplayer;
 using Ryujinx.Graphics.GAL;
 using Ryujinx.HLE.FileSystem;
 using Ryujinx.HLE.HOS;
@@ -175,7 +176,12 @@ namespace Ryujinx.HLE
                                 MemoryManagerMode      memoryManagerMode,
                                 bool                   ignoreMissingServices,
                                 AspectRatio            aspectRatio,
-                                float                  audioVolume)
+                                float                  audioVolume,
+bool useHypervisor,
+MultiplayerMode multiplayerMode,
+bool multiplayerDisableP2p,
+string multiplayerLdnPassphrase,
+string multiplayerLanInterfaceId)
         {
             VirtualFileSystem      = virtualFileSystem;
             LibHacHorizonManager   = libHacHorizonManager;
